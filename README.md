@@ -1,16 +1,23 @@
 # flutter_clean_arc
 
-A new Flutter project.
+---
 
-## Getting Started
+## road map for this workflow
 
-This project is a starting point for a Flutter application.
+PRESENTATION (UI) → BUSINESS LOGIC (BLoC + UseCases) → DATA (Repository + API)
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+UI (UserPage)
+⬇
+Bloc (UserBloc)
+⬇
+UseCase (GetUsers / CreateUser)
+⬇
+Repository Interface (UserRepository)
+⬇
+Repository Implementation (UserRepositoryImpl)
+⬇
+Remote Data Source (UserRemoteDataSource)
+⬇
+API (via DioClient)

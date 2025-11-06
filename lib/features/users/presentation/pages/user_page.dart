@@ -42,8 +42,8 @@ class UserPage extends StatelessWidget {
         onPressed: () {
           final user = UserEntity(
             id: 0,
-            name: 'Yaash',
-            email: 'yaash@example.com',
+            name: 'Zaaroz',
+            email: 'Zaaroz@example.com',
           );
           context.read<UserBloc>().add(AddUser(user));
         },

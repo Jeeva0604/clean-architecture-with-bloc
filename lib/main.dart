@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
       title: 'Clean Arch BLoC Demo',
       home: BlocProvider(
         create: (_) => di.sl<UserBloc>(),
-
         child: const UserPage(),
       ),
     );

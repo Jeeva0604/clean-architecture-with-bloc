@@ -13,10 +13,8 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<UserEntity> createUser(UserEntity user) async {
-    return remoteDataSource.createUser(UserModel(
-      id: user.id,
-      name: user.name,
-      email: user.email,
-    ));
+    return remoteDataSource.createUser(
+      UserModel(id: user.id, name: user.name, email: user.email),
+    );
   }
 }
