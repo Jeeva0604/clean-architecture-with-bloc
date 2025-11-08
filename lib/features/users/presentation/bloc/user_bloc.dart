@@ -16,6 +16,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   Future<void> _onFetchUsers(FetchUsers event, Emitter<UserState> emit) async {
     emit(UserLoading());
+    await Future.delayed(Duration(seconds: 3));
     try {
       final users = await getUsersUseCase();
       emit(UserLoaded(users));

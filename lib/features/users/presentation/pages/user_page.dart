@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/entities/user_entity.dart';
+import 'package:zaaroz_sdk/app_loader.dart';
+
 import '../bloc/user_bloc.dart';
 import '../bloc/user_event.dart';
 import '../bloc/user_state.dart';
@@ -15,14 +16,14 @@ class UserPage extends StatelessWidget {
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
           if (state is UserLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: AppLoader(size: 30, color: Colors.red));
           }
           if (state is UserLoaded) {
             return ListView.builder(
               itemCount: state.users.length,
               itemBuilder: (_, i) => ListTile(
-                title: Text(state.users[i].name),
-                subtitle: Text(state.users[i].email),
+                title: Text(state.users[i].name.toString()),
+                subtitle: Text(state.users[i].email.toString()),
               ),
             );
           }
@@ -40,14 +41,14 @@ class UserPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final user = UserEntity(
-            id: 0,
-            name: 'Zaaroz',
-            email: 'Zaaroz@example.com',
-          );
-          context.read<UserBloc>().add(AddUser(user));
+          // final user = UserEntity(
+          //   id: "0",
+          //   name: 'Zaaroz',
+          //   email: 'Zaaroz@example.com',
+          // );
+          context.read<UserBloc>().add(FetchUsers());
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.refresh),
       ),
     );
   }

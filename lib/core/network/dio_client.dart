@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flutter_clean_arc/core/const/api_urls.dart';
 import '../error/failures.dart';
 
 class DioClient {
@@ -7,8 +8,7 @@ class DioClient {
 
   DioClient(this._dio) {
     _dio.options = BaseOptions(
-      baseUrl:
-          'https://jsonplaceholder.typicode.com', // change to your API base
+      baseUrl: ApiUrls.apiUrl, // change to your API base
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       headers: {'Content-Type': 'application/json'},
@@ -18,7 +18,12 @@ class DioClient {
   // ---------- GET ----------
   Future<Response> get(String endpoint) async {
     try {
-      return await _dio.get(endpoint);
+      var res = await _dio.get(endpoint);
+      if (res.statusCode == 200) {
+        return res;
+      } else {
+        throw Exception(res.data["msg"]);
+      }
     } catch (e) {
       throw ServerFailure(message: e.toString());
     }
