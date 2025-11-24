@@ -13,17 +13,31 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<UserEntity> createUser(UserEntity user) async {
     return UserEntity(
-      id: '',
       name: '',
       email: '',
-      avatar: '',
       city: '',
-      pincode: '',
-      state: '',
-      birthday: DateTime.now(),
       isActive: true,
-      gender: '',
-      address: '',
+      orderId: 0,
+      userId: '',
+      age: '',
+      quantity: '',
+      year: 0,
+      latitude: '',
+      longitude: 0,
+      price: '',
+      rating: 0,
+      discount: 0,
+      temperature: 0,
+      speed: '',
+      height: 0,
+      weight: 0,
+      length: '',
+      country: '',
+      status: '',
+      isAdmin: false,
+      isPremium: '',
+      isVerified: true,
+      hasOrders: '',
     );
   }
 }

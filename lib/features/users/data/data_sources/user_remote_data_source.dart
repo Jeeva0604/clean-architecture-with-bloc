@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../../../../core/network/dio_client.dart';
 import '../models/user_model.dart';
 
@@ -16,7 +18,7 @@ class UserRemoteDataSource {
     apiStopwatch.stop();
 
     if (response.statusCode == 200) {
-      print('🌐 Raw JSON fetch time: ${apiStopwatch.elapsedMilliseconds} ms');
+      log('🌐 Raw JSON fetch time: ${apiStopwatch.elapsedMilliseconds} ms');
 
       // Measure model conversion
       final conversionStopwatch = Stopwatch()..start();
@@ -28,7 +30,7 @@ class UserRemoteDataSource {
       conversionStopwatch.stop();
       totalStopwatch.stop();
 
-      print(
+      log(
         '⚙️ Total (API + Model conversion): ${totalStopwatch.elapsedMilliseconds} ms',
       );
 
